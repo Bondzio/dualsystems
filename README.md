@@ -1,5 +1,9 @@
 # Test task by Gabor Dicso for Dual Systems
 
+## Requirements
+
+The project was developed using the Eclipse IDE. The project requires WildFly 11 and PostgreSQL. You need to define a JDBC data source with the JNDI name java:/PostgresDS on the WildFly instance the app will run on.
+
 ## How to run
 
 Clone the repository and import the projects to Eclipse. Add a WildFly 11 Server instance, then update the Targeted Runtimes in the Properties window for the ejb and web projects. Deploy and run/debug from Eclipse using the WildFly 11 instance.
