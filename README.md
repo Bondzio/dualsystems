@@ -2,7 +2,7 @@
 
 ## How to run
 
-Clone the repository and import the projects to Eclipse. Add a WildFly 11 Server instance, then update the Targeted Runtimes in the Properties window for the ejb and web projects.
+Clone the repository and import the projects to Eclipse. Add a WildFly 11 Server instance, then update the Targeted Runtimes in the Properties window for the ejb and web projects. Deploy and run/debug from Eclipse using the WildFly 11 instance.
 
 ## Known problems
 
