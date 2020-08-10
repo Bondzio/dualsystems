@@ -2,7 +2,7 @@
 
 ## Requirements
 
-The project was developed using the Eclipse IDE. The project requires WildFly 11 and PostgreSQL. You need to define a JDBC data source with the JNDI name java:/PostgresDS on the WildFly instance the app will run on.
+The project was developed using the Eclipse IDE with the JBoss Tools plugin installed. The project requires WildFly 11 and PostgreSQL. You need to define a JDBC data source with the JNDI name java:/PostgresDS on the WildFly instance the app will run on.
 
 ## How to run
 
