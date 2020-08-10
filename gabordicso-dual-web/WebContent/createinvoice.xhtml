@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+<h:head>
+	<title>Create Invoice</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<style rel="">
+.form-group.required .control-label:after { 
+   content: " *";
+   color: red;
+}
+	</style>
+</h:head>
+<h:body>
+	<a href="invoicelist.xhtml">Back to Invoice List</a>
+	<h1>Create Invoice</h1>
+	<h:form>
+	    <table class="table table-bordered table-striped form-group required">
+	        <thead>
+	        	<tr>
+		            <th>Property</th>
+		            <th>Value</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+                <tr>
+                    <td>
+			            <label class='control-label'>Customer Name</label>
+                    </td>
+                    <td>
+            			<h:inputText value="#{invoiceMB.current.customerName}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+            			<label class='control-label'>Issue Date (expected format: YYYY.MM.DD., e.g. 2020.08.01.)</label>
+                    </td>
+                    <td>
+            			<h:inputText value="#{invoiceMB.current.issueDate}" converter="dateConverter" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+            			<label class='control-label'>Due Date (expected format: YYYY.MM.DD., e.g. 2020.08.01.)</label>
+                    </td>
+                    <td>
+            			<h:inputText value="#{invoiceMB.current.dueDate}" converter="dateConverter" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+            			Comment
+                    </td>
+                    <td>
+            			<h:inputText value="#{invoiceMB.current.comment}" />
+                    </td>
+                </tr>
+	        </tbody>
+	    </table>
+        <div>
+			<h:commandButton action="#{invoiceMB.create()}" value="Create Invoice" />
+        </div>
+
+		<c:choose>
+			<c:when test="#{invoiceMB.current.items.size() > 0}">
+				<h2>Items</h2>
+			    <table class="table table-bordered table-striped">
+			        <thead>
+			        	<tr>
+				            <th>Product Name</th>
+				            <th>Quantity</th>
+				            <th>Unit</th>
+				            <th>Unit Price, HUF</th>
+				            <th>Total Item Price, HUF</th>
+				            <th></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <ui:repeat var="item" value="#{invoiceMB.current.items}">
+			                <tr>
+			                    <td>#{item.productName}</td>
+			                    <td>#{item.quantity}</td>
+			                    <td>#{item.unit}</td>
+			                    <td>#{item.unitPrice}</td>
+			                    <td>#{item.totalItemPrice}</td>
+			                    <td>
+			                        <h:form>
+			                            <h:commandLink action="#{invoiceMB.deleteNewlyCreatedItem(item)}" value="Delete" />
+			                        </h:form>                    
+			                    </td>
+			                </tr>
+			            </ui:repeat>
+			        </tbody>
+			    </table>
+			</c:when>
+			<c:otherwise>
+				<h2>No Items</h2>
+			</c:otherwise>
+		</c:choose>
+    </h:form>
+	<h:form>
+        <div>
+			<h2>Add Item</h2>
+		    <table class="table table-bordered table-striped form-group required">
+		        <thead>
+		        	<tr>
+			            <th>Property</th>
+			            <th>Value</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+	                <tr>
+	                    <td>
+				            <label class='control-label'>Product Name</label>
+	                    </td>
+	                    <td>
+	            			<h:inputText value="#{invoiceMB.currentItem.productName}" />
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>
+	            			<label class='control-label'>Quantity</label>
+	                    </td>
+	                    <td>
+	            			<h:inputText value="#{invoiceMB.currentItem.quantity}" />
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>
+	            			<label class='control-label'>Unit</label>
+	                    </td>
+	                    <td>
+	            			<h:inputText value="#{invoiceMB.currentItem.unit}" />
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>
+	            			<label class='control-label'>Unit Price, HUF</label>
+	                    </td>
+	                    <td>
+	            			<h:inputText value="#{invoiceMB.currentItem.unitPrice}" />
+	                    </td>
+	                </tr>
+		        </tbody>
+		    </table>
+			<h:commandButton action="#{invoiceMB.addItemToCurrent}" value="Add Item to Invoice" />
+        </div>
+    </h:form>
+</h:body> 
+</html>

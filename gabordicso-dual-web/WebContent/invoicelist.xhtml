@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+<h:head>
+	<title>Invoices</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</h:head> 
+<h:body>
+	
+	<h:form>
+		<h:link outcome="createinvoice.xhtml" value="Create Invoice" />
+	</h:form>
+	<h1>Invoices</h1>
+	<c:choose>
+		<c:when test="#{invoiceMB.all.size() > 0}">
+		    <table border="solid" cellpadding="2" cellspacing="3" class="table table-bordered table-striped">
+		        <thead>
+		        	<tr>
+			            <th>Customer Name</th>
+			            <th>Issue Date</th>
+			            <th>Due Date</th>
+			            <th>No. of Items</th>
+			            <th>Total, HUF</th>
+			            <th>Total, EUR</th>
+			            <th>Comment</th>
+			            <th></th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <ui:repeat var="invoice" value="#{invoiceMB.all}">
+		                <tr>
+		                    <td>#{invoice.customerName}</td>
+		                    <td>#{invoiceMB.formatDate(invoice.issueDate)}</td>
+		                    <td>#{invoiceMB.formatDate(invoice.dueDate)}</td>
+		                    <td>#{invoice.items.size()}</td>
+		                    <td>#{invoice.total}</td>
+		                    <td>#{invoiceMB.hufToEur(invoice.issueDate, invoice.total)}</td>
+		                    <td>#{invoice.comment}</td>
+		                    <td>
+		                        <h:form>
+		                        	<h:link outcome="viewinvoice.xhtml?viewInvoiceId=#{invoice.id}" value="View" />
+		                        </h:form>
+		                    </td>
+		                </tr>
+		            </ui:repeat>
+		        </tbody>
+		    </table>
+		</c:when>
+		<c:otherwise>
+			<h2>No Invoices</h2>
+		</c:otherwise>
+	</c:choose>
+</h:body> 
+</html>
