@@ -1,4 +1,4 @@
-# Test task by Gabor Dicso for Dualsystems
+# Test task by Gabor Dicso for Dual Systems
 
 ## How to run
 
