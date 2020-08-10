@@ -12,7 +12,7 @@ CREATE TABLE public.exchangerate
 (
     id bigint NOT NULL,
     date timestamp without time zone NOT NULL,
-    huftoeurmultiplier numeric(12,12) NOT NULL,
+    huftoeurmultiplier numeric(24,12) NOT NULL,
     CONSTRAINT exchangerate_pkey PRIMARY KEY (id)
 )
 
@@ -52,9 +52,9 @@ CREATE TABLE public.invoiceitem
 (
     id bigint NOT NULL,
     productname character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    quantity numeric(19,2) NOT NULL,
+    quantity numeric(24,12) NOT NULL,
     unit character varying(100) COLLATE pg_catalog."default",
-    unitprice numeric(19,2) NOT NULL,
+    unitprice numeric(24,12) NOT NULL,
     invoice_id bigint NOT NULL,
     CONSTRAINT invoiceitem_pkey PRIMARY KEY (id),
     CONSTRAINT fkm1qstfhfwpv8oip90w8fdxfl3 FOREIGN KEY (invoice_id)

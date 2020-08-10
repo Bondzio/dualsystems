@@ -187,7 +187,7 @@ public class InvoiceMB implements Serializable {
 		if (viewInvoiceId == null) {
 			return null;
 		}
-		return invoiceDao.getById(viewInvoiceId);
+		return invoiceDao.getById(viewInvoiceId); // FIXME cache viewed invoice instance!
 	}
 	
 	public void deleteNewlyCreatedItem(InvoiceItem item) {

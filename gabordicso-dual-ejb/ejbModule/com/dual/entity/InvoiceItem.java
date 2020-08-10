@@ -33,10 +33,10 @@ public class InvoiceItem implements Serializable {
 	@Length(max = 100)
 	private String unit;
 	@NotNull
-	@Column(nullable=false, precision=12, scale=12)
+	@Column(nullable=false, precision=24, scale=12)
 	private BigDecimal unitPrice;
 	@NotNull
-	@Column(nullable=false, precision=12, scale=12)
+	@Column(nullable=false, precision=24, scale=12)
 	private BigDecimal quantity;
 	@Transient
 	private BigDecimal totalItemPrice;

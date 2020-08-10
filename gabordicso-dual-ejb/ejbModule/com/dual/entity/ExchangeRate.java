@@ -27,7 +27,7 @@ public class ExchangeRate implements Serializable {
 	@NotNull
 	private Date date;
 	@NotNull
-	@Column(nullable=false, precision=12, scale=12)
+	@Column(nullable=false, precision=24, scale=12)
 	private BigDecimal hufToEurMultiplier;
 	public Long getId() {
 		return id;

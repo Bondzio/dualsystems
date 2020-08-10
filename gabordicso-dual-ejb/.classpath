@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="ejbModule"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-se-8u41-ri">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 11.0 Runtime 1">
 		<attributes>
-			<attribute name="owner.project.facets" value="jst.jaxrs;jpt.jpa;jst.ejb"/>
+			<attribute name="owner.project.facets" value="jst.jaxrs"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
@@ -18,5 +13,15 @@
 	<classpathentry kind="lib" path="lib/commons-text-1.9-tests.jar"/>
 	<classpathentry kind="lib" path="lib/commons-text-1.9.jar" sourcepath="C:/Users/Gabor Dicso/.m2/repository/org/apache/commons/commons-text/1.9/commons-text-1.9-sources.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-to-slf4j-2.13.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 11.0 Runtime">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.ejb;jpt.jpa"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-11.0.2">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
